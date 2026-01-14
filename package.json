@@ -1,0 +1,53 @@
+{
+  "name": "sql-validator-extension",
+  "displayName": "sql-validator-extension",
+  "description": "SQL validation",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+  "onLanguage:python",
+  "onStartupFinished",
+  "workspaceContains:src/cli.py"
+  ],
+
+  "main": "./out/extension.js",
+  "contributes": {
+  "languages": [
+    {
+      "id": "python",
+      "aliases": ["Python", "py"],
+      "extensions": [".py"]
+    }
+  ],
+  "commands": [
+    {
+      "command": "sql-validator.runCheck",
+      "title": "Run SQL Validator"
+    }
+  ]
+  },
+
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.103.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.48.1",
+    "eslint": "^9.39.1",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
