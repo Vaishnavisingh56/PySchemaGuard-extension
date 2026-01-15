@@ -95,11 +95,17 @@ export function activate(context: vscode.ExtensionContext) {
                     startCol + offending.length
                 );
 
+                const severity =
+                    issue.severity === "warning"
+                        ? vscode.DiagnosticSeverity.Warning
+                        : vscode.DiagnosticSeverity.Error;
+
                 const diag = new vscode.Diagnostic(
                     range,
                     `${issue.message}${issue.suggestion ? " → " + issue.suggestion : ""}`,
-                    vscode.DiagnosticSeverity.Error
+                    severity
                 );
+
 
                 diagList.push(diag);
             }
