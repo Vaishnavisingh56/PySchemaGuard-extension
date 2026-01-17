@@ -2,7 +2,7 @@
   "name": "pyschemaguard",
   "displayName": "PySchemaGuard",
   "description": "Schema-aware static SQL validation for Python with live diagnostics",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "vaishnavisingh",
   "repository": {
     "type": "git",
