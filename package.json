@@ -4,6 +4,10 @@
   "description": "Schema-aware static SQL validation for Python with live diagnostics",
   "version": "0.1.0",
   "publisher": "vaishnavisingh",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vaishnavisingh56/PySchemaGuard-extension"
+  },
   "engines": {
     "vscode": "^1.80.0"
   },
