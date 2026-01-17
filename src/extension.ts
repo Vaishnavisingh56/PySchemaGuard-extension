@@ -1,11 +1,19 @@
 import * as vscode from "vscode";
 import { exec } from "child_process";
 
-const PROJECT_DIR = "C:\\Users\\hp\\sql-validator";
-const PYTHON_PATH = "C:\\Users\\hp\\sql-validator\\env\\Scripts\\python.exe";
+
+const PYTHON_PATH = "py";
 
 
 export function activate(context: vscode.ExtensionContext) {
+
+    const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
+    if (!workspaceFolder) {
+        vscode.window.showErrorMessage("No workspace folder open.");
+        return;
+    }
+
+    const PROJECT_DIR = workspaceFolder.uri.fsPath;
 
     const output = vscode.window.createOutputChannel("SQL Validator");
     context.subscriptions.push(output);
@@ -21,7 +29,7 @@ export function activate(context: vscode.ExtensionContext) {
         const cmd = `${PYTHON_PATH} -m src.cli check "${filePath}" --json-output`;
 
         exec(cmd, { cwd: PROJECT_DIR }, (err, stdout, stderr) => {
-
+            
             output.clear();
             output.appendLine("Running SQL Validator...");
             output.appendLine(`Command: ${cmd}`);

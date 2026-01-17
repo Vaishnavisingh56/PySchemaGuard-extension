@@ -1,71 +1,108 @@
-# sql-validator-extension README
+PySchemaGuard – VS Code Extension
 
-This is the README for your extension "sql-validator-extension". After writing up a brief description, we recommend including the following sections.
+PySchemaGuard is a Visual Studio Code extension that provides live, schema-aware SQL validation for Python files.
 
-## Features
+It highlights SQL-related semantic errors directly in the editor using:
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Red underlines for errors
 
-For example if there is an image subfolder under your extension project workspace:
+Yellow underlines for warnings
 
-\!\[feature X\]\(images/feature-x.png\)
+Hover tooltips with suggestions
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+✨ Features
 
-## Requirements
+Live SQL validation inside Python files
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Invalid table and column detection
 
-## Extension Settings
+Intelligent fuzzy suggestions
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+Datatype mismatch warnings
 
-For example:
+Supports SELECT, INSERT, UPDATE, DELETE, DROP, TRUNCATE
 
-This extension contributes the following settings:
+Static analysis only (no SQL execution)
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+🧠 How It Works
 
-## Known Issues
+The extension:
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Detects changes in Python files
 
-## Release Notes
+Executes the PySchemaGuard backend in the workspace
 
-Users appreciate release notes as you update your extension.
+Parses structured JSON diagnostics
 
-### 1.0.0
+Displays editor underlines and tooltips
 
-Initial release of ...
+The extension itself:
 
-### 1.0.1
+Does not connect to the database
 
-Fixed issue #.
+Does not contain validation logic
 
-### 1.1.0
+Acts as a thin integration layer
 
-Added features X, Y, and Z.
+✅ Requirements
 
----
+Python 3.8 or later
 
-## Following extension guidelines
+Backend repository present in workspace
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+Python dependencies installed:
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+py -m pip install -r requirements.txt
 
-## Working with Markdown
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+A valid schema.json file
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+📁 Required Workspace Structure
 
-## For more information
+The opened workspace must contain the backend:
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+your-project/
+├── src/
+│   └── cli.py
+├── schema.json
+├── requirements.txt
+└── your_code.py
 
-**Enjoy!**
+▶️ Usage
+
+Install the extension from Marketplace or VSIX
+
+Open a workspace containing the backend
+
+Open a Python file with SQL queries
+
+Edit the file to trigger validation
+
+View underlines and hover messages
+
+⚠️ Notes
+
+Validation triggers on file changes
+
+Complex SQL (nested queries, alias-heavy joins) may have limited support
+
+Schema must be regenerated if database changes
+
+🛠️ Troubleshooting
+No underlines visible
+
+Ensure a file edit occurred
+
+Ensure backend exists in workspace
+
+Ensure Python dependencies are installed
+
+ModuleNotFoundError
+
+Run:
+
+py -m pip install -r requirements.txt
+
+📄 License
+
+MIT License
