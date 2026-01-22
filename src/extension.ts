@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 import { exec } from "child_process";
 
 
-const PYTHON_PATH = "python";
+const PYTHON_PATH = "py";
 
 
 export function activate(context: vscode.ExtensionContext) {
